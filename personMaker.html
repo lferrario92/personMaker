@@ -1,0 +1,66 @@
+
+<html>
+  <body>
+    <div>
+      <div class="person">
+        <div class="char head"></div>
+        <div class="char hair"></div>
+        <div class="char eyes"></div>
+        <div class="char nose"></div>
+        <div class="char mouth"></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  let person = {}
+
+  const chars = {
+    head: [0, 1, 2, 3, 4, 5],
+    hair: [0, 1, 2, 3, 4, 5],
+    eyes: [0, 1, 2, 3, 4, 5],
+    nose: [0, 1, 2, 3, 4, 5],
+    mouth: [0, 1, 2, 3, 4, 5],
+    weight: [0, 1, 2, 3, 4, 5],
+    height: [0, 1, 2, 3, 4, 5],
+    faceHair: [0, 1, 2, 3, 4, 5],
+    eyebrows: [0, 1, 2, 3, 4, 5]
+  }
+
+  Object.keys(chars).forEach(char => {
+    person[char] = chars[char][Math.floor(Math.random() * chars[char].length)]
+    const charPart = document.querySelector('.person').querySelector(`.${char}`)
+
+    var img = new Image()
+    if (person[char]) {
+      img.src = `${char}/mouth5 (${person[char]}).png`
+    } else {
+      img.src = `${char}/mouth5.png`
+    }
+    charPart.appendChild(img)
+  })
+
+  console.log(person)
+
+</script>
+
+<style>
+  .person {
+    position: relative;
+  }
+
+  .char {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  img {
+    width: 150px;
+    -ms-interpolation-mode: nearest-neighbor;
+    /* Firefox */
+    image-rendering: crisp-edges;
+    /* Chromium + Safari */
+    image-rendering: pixelated;
+  }
+</style>
